@@ -1,0 +1,118 @@
+{% load static %}
+<html lang="en">
+<head>
+    <title>Online Super Market</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}">
+    <script src="{% static 'images/myjs.js' %}"></script>
+</head>
+<body>
+    
+
+<div class="container font-italic " style="color: blue; text-align: center;font-size: 2.5em;">
+        &nbsp;<span style="color:red">Dulux</span>
+        <span style="color:green">Super</span>
+        <span style="color:blue">Market</span>
+    
+    </div>
+    <br>
+<div class="nav bg-white" id="sidebar">
+   
+    <div class="py-4 px-3 mb-1 bg-white"> 
+        <div class="media d-flex align-items-center">
+            <img src="{% static 'images/loguserpic.jpg' %}" width="80" height="80"
+                 class="mr-3 rounded-circle img-thumbnail shadow-sm">
+            <div class="media-body">
+                <h4 class="mb-0">{{request.user.username}}</h4>
+                <p class="text-muted mb-0">{{request.user.email}}</p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <ul class="nav  bg-white ml-auto">
+          <br>
+       
+
+
+
+
+        <li class="nav-item">
+            <a href="{% url 'products' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+               Home
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'vcart' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+               Cart <span class="badge badge-warning">{{count}}</span>
+            </a>
+        </li>
+
+
+
+
+
+        <li class="nav-item">
+            <a href="{% url 'products' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+               All Products
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'collections' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+                Category
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <div>
+                <form class="form-inline my-2 my-lg-0" form action="{% url 'search' %}" method="get">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </div>
+        </li>
+
+
+          <!--fa-fw class is used to set icons at a fixed width. This class is useful when different icon widths throw off alignment-->
+
+
+        <li class="nav-item">
+            <a href="{% url 'order' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-cog mr-3 text-primary fa-fw"></i>
+                My Orders
+            </a>
+        </li>  
+        
+        <li class="nav-item  " >
+            <a href="{% url 'logout' %}" class="nav-link text-dark bg-light">
+                <i class="fas fa-sign-out-alt mr-3 text-primary fa-fw"></i>
+                Logout
+            </a>
+        </li>
+
+ 
+    </ul>
+</div>
+
+
+ 
+{% block main %}
+{% endblock main %}
+
+</body>
+</html>
+
+
